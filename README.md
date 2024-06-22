@@ -7,7 +7,7 @@
 
 ![Result 1](results/mytam.jpg)
 ![Result 2](results/coach.jpg)
-![Result 3](result/family.jpg)
+![Result 3](results/family.jpg)
 ![Result 4](results/georgy.jpg)
 
 ![Loss Diagram](diagram/loss_plot.png)
