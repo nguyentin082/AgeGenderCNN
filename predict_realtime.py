@@ -5,12 +5,13 @@ import keras.losses
 import matplotlib.pyplot as plt
 
 # Load the model
-model_path = "models/100Epochs/model.h5"
+model_path = "models/model.h5"
 keras.losses.mse = keras.losses.MeanSquaredError()
 model = load_model(model_path, custom_objects={'mse': keras.losses.mse})
 
 # Load face detection model
 face_cascade = cv2.CascadeClassifier("models/haarcascade_frontalface_default.xml")
+
 
 def predict_age_gender(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -18,11 +19,16 @@ def predict_age_gender(frame):
     age_ = []
     gender_ = []
     for (x, y, w, h) in faces:
-        img = gray[y-50:y+40+h, x-10:x+10+w]
-        img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
+        x1 = max(x - 10, 0)
+        y1 = max(y - 50, 0)
+        x2 = min(x + w + 10, frame.shape[1])
+        y2 = min(y + h + 40, frame.shape[0])
+
+        img = frame[y1:y2, x1:x2]
         img = cv2.resize(img, (200, 200))
+        img = img / 255.0  # Normalize the pixel values
         predict = model.predict(np.array(img).reshape(-1, 200, 200, 3))
-        age_.append(predict[0])
+        age_.append(predict[0][0])
         gender_.append(np.argmax(predict[1]))
         gend = np.argmax(predict[1])
         if gend == 0:
@@ -31,18 +37,20 @@ def predict_age_gender(frame):
         else:
             gend = 'Woman'
             col = (203, 12, 255)
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 225, 0), 4)
-        cv2.putText(frame, "Age : "+str(int(predict[0]))+" / "+str(gend), (x, y), cv2.FONT_HERSHEY_SIMPLEX, w*0.005, col, 4)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 225, 0), 2)
+        cv2.putText(frame, f"Age: {int(predict[0][0])} / {gend}", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, col, 2)
     return frame, age_, gender_
+
 
 # Access webcam
 cap = cv2.VideoCapture(0)
 plt.ion()  # Turn on interactive mode for matplotlib
 fig, ax = plt.subplots()
 ret, frame = cap.read()
-output_image, _, _ = predict_age_gender(frame)
-im = ax.imshow(cv2.cvtColor(output_image, cv2.COLOR_BGR2RGB))
-plt.axis('off')
+if ret:
+    output_image, _, _ = predict_age_gender(frame)
+    im = ax.imshow(cv2.cvtColor(output_image, cv2.COLOR_BGR2RGB))
+    plt.axis('off')
 
 while True:
     ret, frame = cap.read()

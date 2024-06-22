@@ -1,0 +1,182 @@
+root@1abc:~/AgeGender# python3 train_test.py
+2024-06-22 08:00:52.885056: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-06-22 08:00:54.943886: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Total number of images: 23708
+Training data shape: (14224, 200, 200, 3)
+Training labels shape (age): (14224,)
+Training labels shape (gender): (14224,)
+Validation data shape: (4742, 200, 200, 3)
+Validation labels shape (age): (4742,)
+Validation labels shape (gender): (4742,)
+Test data shape: (4742, 200, 200, 3)
+Test labels shape (age): (4742,)
+Test labels shape (gender): (4742,)
+2024-06-22 08:01:44.943881: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:45.207548: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:45.208382: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:45.213506: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:45.214194: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:45.214835: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:48.627721: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:48.628546: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:48.629269: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-06-22 08:01:48.629790: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1928] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 22079 MB memory:  -> device: 0, name: GRID P40-24Q, pci bus id: 0000:02:01.0, compute capability: 6.1
+2024-06-22 08:01:55.928001: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 6827520000 exceeds 10% of free system memory.
+2024-06-22 08:02:01.421941: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 6827520000 exceeds 10% of free system memory.
+Epoch 1/50
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1719043330.014241  139411 service.cc:145] XLA service 0x7fd28001dd50 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+I0000 00:00:1719043330.014915  139411 service.cc:153]   StreamExecutor device (0): GRID P40-24Q, Compute Capability 6.1
+2024-06-22 08:02:10.235359: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-06-22 08:02:13.165233: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:465] Loaded cuDNN version 8906
+2024-06-22 08:02:30.623249: E external/local_xla/xla/service/slow_operation_alarm.cc:65] Trying algorithm eng0{} for conv (f32[130,140,3,3]{3,2,1,0}, u8[0]{0}) custom-call(f32[32,140,198,198]{3,2,1,0}, f32[32,130,196,196]{3,2,1,0}), window={size=3x3}, dim_labels=bf01_oi01->bf01, custom_call_target="__cudnn$convBackwardFilter", backend_config={"operation_queue_id":"0","wait_on_operation_queues":[],"cudnn_conv_backend_config":{"conv_result_scale":1,"activation_mode":"kNone","side_input_scale":0,"leakyrelu_alpha":0}} is taking a while...
+2024-06-22 08:02:36.810962: E external/local_xla/xla/service/slow_operation_alarm.cc:133] The operation took 7.187948417s
+Trying algorithm eng0{} for conv (f32[130,140,3,3]{3,2,1,0}, u8[0]{0}) custom-call(f32[32,140,198,198]{3,2,1,0}, f32[32,130,196,196]{3,2,1,0}), window={size=3x3}, dim_labels=bf01_oi01->bf01, custom_call_target="__cudnn$convBackwardFilter", backend_config={"operation_queue_id":"0","wait_on_operation_queues":[],"cudnn_conv_backend_config":{"conv_result_scale":1,"activation_mode":"kNone","side_input_scale":0,"leakyrelu_alpha":0}} is taking a while...
+2024-06-22 08:02:38.376031: E external/local_xla/xla/service/slow_operation_alarm.cc:65] Trying algorithm eng0{} for conv (f32[120,130,3,3]{3,2,1,0}, u8[0]{0}) custom-call(f32[32,130,98,98]{3,2,1,0}, f32[32,120,96,96]{3,2,1,0}), window={size=3x3}, dim_labels=bf01_oi01->bf01, custom_call_target="__cudnn$convBackwardFilter", backend_config={"operation_queue_id":"0","wait_on_operation_queues":[],"cudnn_conv_backend_config":{"conv_result_scale":1,"activation_mode":"kNone","side_input_scale":0,"leakyrelu_alpha":0}} is taking a while...
+2024-06-22 08:02:38.677168: E external/local_xla/xla/service/slow_operation_alarm.cc:133] The operation took 1.301311807s
+Trying algorithm eng0{} for conv (f32[120,130,3,3]{3,2,1,0}, u8[0]{0}) custom-call(f32[32,130,98,98]{3,2,1,0}, f32[32,120,96,96]{3,2,1,0}), window={size=3x3}, dim_labels=bf01_oi01->bf01, custom_call_target="__cudnn$convBackwardFilter", backend_config={"operation_queue_id":"0","wait_on_operation_queues":[],"cudnn_conv_backend_config":{"conv_result_scale":1,"activation_mode":"kNone","side_input_scale":0,"leakyrelu_alpha":0}} is taking a while...
+I0000 00:00:1719043363.199309  139411 device_compiler.h:188] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+444/445 ━━━━━━━━━━━━━━━━━━━━ 0s 241ms/step - age_output_mae: 17.8985 - gender_output_accuracy: 0.5563 - loss: 674.85252024-06-22 08:04:40.077466: E external/local_xla/xla/service/slow_operation_alarm.cc:65] Trying algorithm eng0{} for conv (f32[130,140,3,3]{3,2,1,0}, u8[0]{0}) custom-call(f32[16,140,198,198]{3,2,1,0}, f32[16,130,196,196]{3,2,1,0}), window={size=3x3}, dim_labels=bf01_oi01->bf01, custom_call_target="__cudnn$convBackwardFilter", backend_config={"operation_queue_id":"0","wait_on_operation_queues":[],"cudnn_conv_backend_config":{"conv_result_scale":1,"activation_mode":"kNone","side_input_scale":0,"leakyrelu_alpha":0}} is taking a while...
+2024-06-22 08:04:42.371072: E external/local_xla/xla/service/slow_operation_alarm.cc:133] The operation took 3.293783473s
+Trying algorithm eng0{} for conv (f32[130,140,3,3]{3,2,1,0}, u8[0]{0}) custom-call(f32[16,140,198,198]{3,2,1,0}, f32[16,130,196,196]{3,2,1,0}), window={size=3x3}, dim_labels=bf01_oi01->bf01, custom_call_target="__cudnn$convBackwardFilter", backend_config={"operation_queue_id":"0","wait_on_operation_queues":[],"cudnn_conv_backend_config":{"conv_result_scale":1,"activation_mode":"kNone","side_input_scale":0,"leakyrelu_alpha":0}} is taking a while...
+445/445 ━━━━━━━━━━━━━━━━━━━━ 0s 292ms/step - age_output_mae: 17.8900 - gender_output_accuracy: 0.5563 - loss: 674.19322024-06-22 08:04:55.215313: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 2276160000 exceeds 10% of free system memory.
+2024-06-22 08:04:56.953486: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 2276160000 exceeds 10% of free system memory.
+445/445 ━━━━━━━━━━━━━━━━━━━━ 185s 331ms/step - age_output_mae: 17.8816 - gender_output_accuracy: 0.5564 - loss: 673.5369 - val_age_output_mae: 11.5182 - val_gender_output_accuracy: 0.6837 - val_loss: 237.8568
+Epoch 2/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 262ms/step - age_output_mae: 10.3261 - gender_output_accuracy: 0.7142 - loss: 195.7383 - val_age_output_mae: 14.9902 - val_gender_output_accuracy: 0.8075 - val_loss: 398.3145
+Epoch 3/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 261ms/step - age_output_mae: 8.5380 - gender_output_accuracy: 0.7616 - loss: 132.0102 - val_age_output_mae: 9.2833 - val_gender_output_accuracy: 0.8313 - val_loss: 156.9940
+Epoch 4/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 261ms/step - age_output_mae: 7.5333 - gender_output_accuracy: 0.8133 - loss: 102.1311 - val_age_output_mae: 8.9397 - val_gender_output_accuracy: 0.8414 - val_loss: 137.7269
+Epoch 5/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 6.5235 - gender_output_accuracy: 0.8148 - loss: 75.9924 - val_age_output_mae: 7.8989 - val_gender_output_accuracy: 0.8745 - val_loss: 114.5032
+Epoch 6/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 261ms/step - age_output_mae: 5.7831 - gender_output_accuracy: 0.8458 - loss: 59.4103 - val_age_output_mae: 8.0282 - val_gender_output_accuracy: 0.8387 - val_loss: 113.7317
+Epoch 7/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 261ms/step - age_output_mae: 5.0201 - gender_output_accuracy: 0.8441 - loss: 44.8191 - val_age_output_mae: 7.5469 - val_gender_output_accuracy: 0.8655 - val_loss: 105.1252
+Epoch 8/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 261ms/step - age_output_mae: 4.5999 - gender_output_accuracy: 0.8724 - loss: 38.0910 - val_age_output_mae: 8.3311 - val_gender_output_accuracy: 0.8482 - val_loss: 123.0791
+Epoch 9/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 4.3936 - gender_output_accuracy: 0.9017 - loss: 34.6375 - val_age_output_mae: 7.5213 - val_gender_output_accuracy: 0.8475 - val_loss: 110.3371
+Epoch 10/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 261ms/step - age_output_mae: 3.9723 - gender_output_accuracy: 0.9004 - loss: 28.7722 - val_age_output_mae: 7.1034 - val_gender_output_accuracy: 0.8450 - val_loss: 101.2631
+Epoch 11/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 261ms/step - age_output_mae: 3.6153 - gender_output_accuracy: 0.9187 - loss: 24.0876 - val_age_output_mae: 7.2869 - val_gender_output_accuracy: 0.8665 - val_loss: 104.2538
+Epoch 12/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 4.0843 - gender_output_accuracy: 0.9221 - loss: 31.2597 - val_age_output_mae: 7.7147 - val_gender_output_accuracy: 0.8429 - val_loss: 108.5445
+Epoch 13/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 3.3462 - gender_output_accuracy: 0.9312 - loss: 20.6959 - val_age_output_mae: 7.4464 - val_gender_output_accuracy: 0.8657 - val_loss: 113.3022
+Epoch 14/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 3.0979 - gender_output_accuracy: 0.9459 - loss: 18.4903 - val_age_output_mae: 7.1246 - val_gender_output_accuracy: 0.8659 - val_loss: 95.5890
+Epoch 15/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 2.9009 - gender_output_accuracy: 0.9363 - loss: 15.6192 - val_age_output_mae: 7.2908 - val_gender_output_accuracy: 0.8562 - val_loss: 108.6900
+Epoch 16/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 2.8074 - gender_output_accuracy: 0.9471 - loss: 15.1503 - val_age_output_mae: 6.6849 - val_gender_output_accuracy: 0.8716 - val_loss: 89.9324
+Epoch 17/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 2.7434 - gender_output_accuracy: 0.9387 - loss: 14.1568 - val_age_output_mae: 6.8255 - val_gender_output_accuracy: 0.8796 - val_loss: 96.2460
+Epoch 18/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 2.8878 - gender_output_accuracy: 0.9623 - loss: 16.1296 - val_age_output_mae: 6.8462 - val_gender_output_accuracy: 0.8682 - val_loss: 92.0150
+Epoch 19/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 2.6898 - gender_output_accuracy: 0.9575 - loss: 14.1714 - val_age_output_mae: 7.1034 - val_gender_output_accuracy: 0.8768 - val_loss: 94.1566
+Epoch 20/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 2.5001 - gender_output_accuracy: 0.9741 - loss: 12.8636 - val_age_output_mae: 6.9562 - val_gender_output_accuracy: 0.8790 - val_loss: 93.3855
+Epoch 21/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 2.3726 - gender_output_accuracy: 0.9683 - loss: 11.2659 - val_age_output_mae: 6.7443 - val_gender_output_accuracy: 0.8838 - val_loss: 93.4734
+Epoch 22/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 2.2476 - gender_output_accuracy: 0.9777 - loss: 10.4265 - val_age_output_mae: 6.9905 - val_gender_output_accuracy: 0.8726 - val_loss: 94.4787
+Epoch 23/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 2.2989 - gender_output_accuracy: 0.9742 - loss: 14.5225 - val_age_output_mae: 6.7896 - val_gender_output_accuracy: 0.8790 - val_loss: 91.1464
+Epoch 24/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 2.4644 - gender_output_accuracy: 0.9796 - loss: 14.3930 - val_age_output_mae: 6.7408 - val_gender_output_accuracy: 0.8855 - val_loss: 86.9039
+Epoch 25/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 2.2753 - gender_output_accuracy: 0.9833 - loss: 11.0260 - val_age_output_mae: 7.0103 - val_gender_output_accuracy: 0.8604 - val_loss: 93.4555
+Epoch 26/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 3.2095 - gender_output_accuracy: 0.9665 - loss: 37.0646 - val_age_output_mae: 6.7277 - val_gender_output_accuracy: 0.8686 - val_loss: 93.1980
+Epoch 27/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 2.3036 - gender_output_accuracy: 0.9828 - loss: 10.5009 - val_age_output_mae: 6.6340 - val_gender_output_accuracy: 0.8851 - val_loss: 88.8223
+Epoch 28/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.9553 - gender_output_accuracy: 0.9900 - loss: 7.1603 - val_age_output_mae: 6.5134 - val_gender_output_accuracy: 0.8853 - val_loss: 87.9480
+Epoch 29/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.7784 - gender_output_accuracy: 0.9870 - loss: 6.1476 - val_age_output_mae: 6.5361 - val_gender_output_accuracy: 0.8838 - val_loss: 86.9992
+Epoch 30/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 258ms/step - age_output_mae: 1.7421 - gender_output_accuracy: 0.9805 - loss: 6.1479 - val_age_output_mae: 6.3841 - val_gender_output_accuracy: 0.8878 - val_loss: 84.1609
+Epoch 31/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.7215 - gender_output_accuracy: 0.9845 - loss: 5.8776 - val_age_output_mae: 6.4816 - val_gender_output_accuracy: 0.8882 - val_loss: 84.4736
+Epoch 32/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.7903 - gender_output_accuracy: 0.9900 - loss: 6.2641 - val_age_output_mae: 6.5391 - val_gender_output_accuracy: 0.8676 - val_loss: 84.2647
+Epoch 33/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.7545 - gender_output_accuracy: 0.9849 - loss: 6.4309 - val_age_output_mae: 6.7933 - val_gender_output_accuracy: 0.8870 - val_loss: 95.7823
+Epoch 34/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.8454 - gender_output_accuracy: 0.9915 - loss: 6.8692 - val_age_output_mae: 6.4957 - val_gender_output_accuracy: 0.8865 - val_loss: 82.8328
+Epoch 35/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.7404 - gender_output_accuracy: 0.9937 - loss: 6.2277 - val_age_output_mae: 6.4301 - val_gender_output_accuracy: 0.8925 - val_loss: 83.9610
+Epoch 36/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.6263 - gender_output_accuracy: 0.9939 - loss: 5.2552 - val_age_output_mae: 6.4261 - val_gender_output_accuracy: 0.8878 - val_loss: 83.0380
+Epoch 37/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.5994 - gender_output_accuracy: 0.9693 - loss: 5.2748 - val_age_output_mae: 6.5086 - val_gender_output_accuracy: 0.8876 - val_loss: 89.3990
+Epoch 38/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.6745 - gender_output_accuracy: 0.9899 - loss: 6.1074 - val_age_output_mae: 6.7381 - val_gender_output_accuracy: 0.8899 - val_loss: 86.4848
+Epoch 39/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.5499 - gender_output_accuracy: 0.9929 - loss: 5.0032 - val_age_output_mae: 6.4198 - val_gender_output_accuracy: 0.8853 - val_loss: 86.2074
+Epoch 40/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.7663 - gender_output_accuracy: 0.9923 - loss: 6.3619 - val_age_output_mae: 6.3977 - val_gender_output_accuracy: 0.8855 - val_loss: 84.7886
+Epoch 41/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.5537 - gender_output_accuracy: 0.9961 - loss: 4.9587 - val_age_output_mae: 6.5544 - val_gender_output_accuracy: 0.8946 - val_loss: 83.7223
+Epoch 42/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.4458 - gender_output_accuracy: 0.9961 - loss: 4.5009 - val_age_output_mae: 6.2920 - val_gender_output_accuracy: 0.8958 - val_loss: 81.0264
+Epoch 43/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.4539 - gender_output_accuracy: 0.9976 - loss: 4.2801 - val_age_output_mae: 6.2746 - val_gender_output_accuracy: 0.8929 - val_loss: 81.3858
+Epoch 44/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.4101 - gender_output_accuracy: 0.9930 - loss: 4.2527 - val_age_output_mae: 6.3135 - val_gender_output_accuracy: 0.8973 - val_loss: 83.2295
+Epoch 45/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.3349 - gender_output_accuracy: 0.9942 - loss: 3.7496 - val_age_output_mae: 6.3858 - val_gender_output_accuracy: 0.8929 - val_loss: 80.4475
+Epoch 46/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.4168 - gender_output_accuracy: 0.9856 - loss: 4.1750 - val_age_output_mae: 6.3743 - val_gender_output_accuracy: 0.8925 - val_loss: 83.3393
+Epoch 47/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.3853 - gender_output_accuracy: 0.9935 - loss: 3.8735 - val_age_output_mae: 6.5507 - val_gender_output_accuracy: 0.8882 - val_loss: 82.9791
+Epoch 48/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 115s 259ms/step - age_output_mae: 1.4403 - gender_output_accuracy: 0.9917 - loss: 5.6579 - val_age_output_mae: 6.6423 - val_gender_output_accuracy: 0.8813 - val_loss: 90.8699
+Epoch 49/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.8227 - gender_output_accuracy: 0.9903 - loss: 6.7586 - val_age_output_mae: 6.3031 - val_gender_output_accuracy: 0.8903 - val_loss: 82.5766
+Epoch 50/50
+445/445 ━━━━━━━━━━━━━━━━━━━━ 116s 260ms/step - age_output_mae: 1.2465 - gender_output_accuracy: 0.9908 - loss: 3.2752 - val_age_output_mae: 6.4422 - val_gender_output_accuracy: 0.8950 - val_loss: 83.6480
+WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`.
+2024-06-22 09:39:57.500631: W external/local_tsl/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 2276160000 exceeds 10% of free system memory.
+149/149 ━━━━━━━━━━━━━━━━━━━━ 9s 53ms/step
+True Age: 24, Predicted Age: 28.268287658691406
+True Gender: 1, Predicted Gender: 1
+True Age: 29, Predicted Age: 48.21351623535156
+True Gender: 0, Predicted Gender: 0
+True Age: 54, Predicted Age: 50.33557891845703
+True Gender: 1, Predicted Gender: 1
+True Age: 32, Predicted Age: 36.74469757080078
+True Gender: 0, Predicted Gender: 0
+True Age: 2, Predicted Age: 2.2343320846557617
+True Gender: 1, Predicted Gender: 0
+True Age: 31, Predicted Age: 30.513355255126953
+True Gender: 1, Predicted Gender: 1
+True Age: 44, Predicted Age: 38.78172302246094
+True Gender: 0, Predicted Gender: 0
+True Age: 26, Predicted Age: 27.537673950195312
+True Gender: 1, Predicted Gender: 1
+True Age: 76, Predicted Age: 57.1356315612793
+True Gender: 1, Predicted Gender: 1
+True Age: 30, Predicted Age: 28.114154815673828
+True Gender: 1, Predicted Gender: 0
+Test Accuracy for Gender Prediction: 89.60%
+Confusion Matrix for Gender Prediction:
+ [[2228  211]
+ [ 282 2021]]
+Classification Report for Gender Prediction:
+               precision    recall  f1-score   support
+
+           0       0.89      0.91      0.90      2439
+           1       0.91      0.88      0.89      2303
+
+    accuracy                           0.90      4742
+   macro avg       0.90      0.90      0.90      4742
+weighted avg       0.90      0.90      0.90      4742
+
+Test MAE for Age Prediction: 20.67
+Test RMSE for Age Prediction: 8.95
